@@ -1,0 +1,22 @@
+*** Exos AWS ***
+
+Créer trois scripts python communicant avec AWS
+
+1/ script A
+Le script devra demander à l'utilisateur le nombre de vms à créer.
+
+Chaque VM:
+- sera instanciée à partir de l'image ubuntu 20.04, t2.micro, volume par défaut, vpc par défault
+- lancera un serveur apache2 sous une forme conteneurisée (Docker)
+
+Le script devra récupérer les ids des instances générées ainsi que leur ip publique
+
+
+2/ script B
+Le script enverra des requêtes HTTP sur le port 80 des instances générées par le script A
+Afficher les resulats sous la forme:
+IP: xxx Response: OK
+
+
+3/ script C
+Le script devra "terminer" les instances générées par le script A
