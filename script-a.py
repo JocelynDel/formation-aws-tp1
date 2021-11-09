@@ -11,7 +11,7 @@ def inputNumber(message):
        return userInput 
        break 
 
-f = open('vm-infos.txt', 'a')
+f = open('vm-infos.txt', 'w')
 user_data_content = """#!/bin/bash
 sudo apt update -y
 sudo apt install -y ca-certificates curl gnupg lsb-release
@@ -53,7 +53,7 @@ for i in range (1, numVm+1):
 
     ec2_instance_id = ec2_instance[0].id
     print('Creating EC2 instance')
-    waiter = ec2.get_waiter('instance_running')
+    waiter = ec2_client.get_waiter('instance_running')
     waiter.wait(InstanceIds=[ec2_instance_id])
     print('EC2 Instance created successfully with ID: ' + ec2_instance_id)
     ec2_instance[0].reload()
@@ -61,4 +61,3 @@ for i in range (1, numVm+1):
     info[ec2_instance_id] = ec2_instance_ip
     #print(info.items())
 f.write('\n'.join('%s %s' % x for x in info.items()))
-f.write('\n')
