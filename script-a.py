@@ -1,9 +1,5 @@
 import boto3
 
-
-ec2 = boto3.client('ec2')
-
-
 def inputNumber(message):
   while True:
     try:
